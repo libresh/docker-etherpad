@@ -45,7 +45,7 @@ fi
 
 if [ ! -f settings.json ]; then
 
-  cat <<- EOF > settings.json
+cat <<- EOF > settings.json
   {
     "title": "${ETHERPAD_TITLE}",
     "ip": "0.0.0.0",
@@ -58,25 +58,25 @@ if [ ! -f settings.json ]; then
           "password": "${ETHERPAD_DB_PASSWORD}",
           "database": "${ETHERPAD_DB_NAME}"
         },
-  EOF
+EOF
 
   if [ $ETHERPAD_ADMIN_PASSWORD ]; then
 
     : ${ETHERPAD_ADMIN_USER:=admin}
 
-    cat <<- EOF >> settings.json
+cat <<- EOF >> settings.json
       "users": {
         "${ETHERPAD_ADMIN_USER}": {
           "password": "${ETHERPAD_ADMIN_PASSWORD}",
           "is_admin": true
         }
       },
-    EOF
+EOF
   fi
 
-  cat <<- EOF >> settings.json
+cat <<- EOF >> settings.json
   }
-  EOF
+EOF
 fi
 
 exec "$@"
