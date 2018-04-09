@@ -1,4 +1,4 @@
-FROM node:0.10
+FROM node:9
 
 RUN apt-get update && \
     apt-get install -y gzip git curl python libssl-dev mysql-client && \
